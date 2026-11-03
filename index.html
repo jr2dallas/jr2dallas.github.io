@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jr2dallas — jeux et applis Android</title>
+<meta name="description" content="Les jeux et applications Android de jr2dallas : La Ligue des Beaufs, Visalto, Cluck Off!">
+<meta property="og:title" content="jr2dallas — jeux et applis Android">
+<meta property="og:description" content="La Ligue des Beaufs, Visalto, Cluck Off! : des jeux et applis faits maison.">
+<meta property="og:image" content="https://jr2dallas.github.io/images/ligue-banniere.webp">
+<link rel="icon" href="images/ligue-icone.webp">
+<style>
+  :root {
+    --bg: #fbf6ee;
+    --card: #ffffff;
+    --text: #2a211b;
+    --muted: #6d625a;
+    --line: #eadfcf;
+    --accent: #e8590c;
+    --accent-2: #ffc23d;
+    --shadow: 0 6px 24px rgba(60, 40, 20, .10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17130f;
+      --card: #221c17;
+      --text: #f3ebe2;
+      --muted: #b4a798;
+      --line: #3a3029;
+      --accent: #ff8a3d;
+      --accent-2: #ffc23d;
+      --shadow: 0 6px 24px rgba(0, 0, 0, .35);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--accent); }
+  img { display: block; max-width: 100%; height: auto; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+
+  header.top { padding: 56px 0 32px; text-align: center; }
+  header.top h1 { margin: 0; font-size: clamp(2rem, 6vw, 3rem); letter-spacing: -.02em; }
+  header.top h1 span { color: var(--accent); }
+  header.top p { margin: 8px auto 0; max-width: 560px; color: var(--muted); font-size: 1.1rem; }
+  nav.jump { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 24px; }
+  nav.jump a {
+    text-decoration: none; color: var(--text); background: var(--card);
+    border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-weight: 600;
+  }
+  nav.jump a:hover { border-color: var(--accent); }
+
+  section.project {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    box-shadow: var(--shadow); overflow: hidden; margin: 0 0 40px;
+  }
+  .banner { aspect-ratio: 1024 / 500; width: 100%; object-fit: cover; }
+  .body { padding: 24px; }
+  .head { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .head img.icon { width: 72px; height: 72px; border-radius: 18px; box-shadow: var(--shadow); flex: none; }
+  .head h2 { margin: 0; font-size: 1.6rem; line-height: 1.2; }
+  .head .tagline { margin: 2px 0 0; color: var(--muted); }
+  .status {
+    display: inline-block; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+    padding: 3px 10px; border-radius: 999px; margin-top: 6px;
+  }
+  .status.live { background: #2e9e4a; color: #fff; }
+  .status.soon { background: var(--accent-2); color: #3a2a00; }
+  .status.dev { background: #6b6fd6; color: #fff; }
+  .body p { margin: 16px 0 0; }
+  ul.points { margin: 12px 0 0; padding-left: 20px; }
+  ul.points li { margin: 4px 0; }
+
+  .shots {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; align-items: start;
+  }
+  .shots img { border-radius: 12px; border: 1px solid var(--line); width: 100%; }
+  @media (max-width: 640px) {
+    .shots { grid-template-columns: repeat(2, 1fr); }
+    .body { padding: 18px; }
+  }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700;
+    padding: 10px 18px; border-radius: 12px; border: 2px solid transparent;
+  }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn.ghost { border-color: var(--line); color: var(--text); }
+  .btn.ghost:hover { border-color: var(--accent); }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+
+  footer { padding: 16px 0 56px; text-align: center; color: var(--muted); }
+  footer .contact { font-size: 1.1rem; color: var(--text); margin: 0 0 8px; }
+  footer p { margin: 6px 0; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>jr2<span>dallas</span></h1>
+    <p>Développeur indépendant. Je fais des jeux et des applis Android, en français et sans prise de tête.</p>
+    <nav class="jump" aria-label="Projets">
+      <a href="#ligue">La Ligue des Beaufs</a>
+      <a href="#visalto">Visalto</a>
+      <a href="#cluckoff">Cluck Off!</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="project" id="ligue">
+    <img class="banner" src="images/ligue-banniere.webp" width="1024" height="500" alt="La famille Merguez au camping, avec la machine à pince">
+    <div class="body">
+      <div class="head">
+        <img class="icon" src="images/ligue-icone.webp" width="72" height="72" alt="">
+        <div>
+          <h2>La Ligue des Beaufs</h2>
+          <p class="tagline">5 jeux d'arcade déjantés, seul ou entre potes</p>
+          <span class="status live">Disponible sur Google Play</span>
+        </div>
+      </div>
+      <p>Bienvenue au camping chez les Merguez, une famille 100 % beauf et 100 % attachante. Chaque membre de la famille te lance un défi :</p>
+      <ul class="points">
+        <li><strong>Pile Poil</strong> : soulève le couvercle du barbecue pile au bon moment.</li>
+        <li><strong>Réflexe de Beauf</strong> : buzze avant tout le monde quand la promo s'allume.</li>
+        <li><strong>Dans le Mille, Peuchère !</strong> : vise le centre des cibles à la fête foraine.</li>
+        <li><strong>Turbo Kéké</strong> : fais déraper la voiture de Kévin autour du cône.</li>
+        <li><strong>La machine à pince</strong> : attrape les peluches et remplis l'objectif de chaque machine.</li>
+      </ul>
+      <p>Duels en ligne en temps réel avec classement ELO, salons entre amis, jusqu'à 4 joueurs sur le même téléphone, défis du jour et boutique de thèmes.</p>
+      <div class="shots">
+        <img src="images/ligue-accueil.webp" width="360" height="640" loading="lazy" alt="Écran d'accueil">
+        <img src="images/ligue-pince.webp" width="360" height="640" loading="lazy" alt="La machine à pince">
+        <img src="images/ligue-cible.webp" width="360" height="640" loading="lazy" alt="Dans le Mille, à la fête foraine">
+        <img src="images/ligue-amis.webp" width="360" height="640" loading="lazy" alt="Inviter ses amis">
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.jr2dallas.reflex">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 2.8v18.4c0 .5.5.8.9.6L21 12.6c.4-.2.4-.9 0-1.1L4.9 2.2c-.4-.2-.9.1-.9.6z"/></svg>
+          Télécharger sur Google Play
+        </a>
+        <a class="btn ghost" href="https://github.com/jr2dallas/la-ligue-des-beaufs">Présentation sur GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="visalto">
+    <img class="banner" src="images/visalto-banniere.webp" width="1024" height="500" loading="lazy" alt="Visalto : le nom de chaque sommet, d'un regard">
+    <div class="body">
+      <div class="head">
+        <img class="icon" src="images/visalto-icone.webp" width="72" height="72" loading="lazy" alt="">
+        <div>
+          <h2>Visalto</h2>
+          <p class="tagline">Le nom des sommets, d'un regard</p>
+          <span class="status soon">Bientôt sur Google Play</span>
+        </div>
+      </div>
+      <p>Pointe ton téléphone vers le paysage : sommets, lacs, villages et refuges sont nommés directement à l'écran. Visalto se repère grâce au GPS, à l'orientation du téléphone, aux données OpenStreetMap et au relief.</p>
+      <ul class="points">
+        <li>Vue caméra avec les noms posés sur le paysage</li>
+        <li>Panorama peint et carte, pour explorer même sans viser</li>
+        <li>Fonctionne hors ligne, en montagne</li>
+        <li>Sans pub et sans pistage, en français et en anglais</li>
+      </ul>
+      <div class="shots">
+        <img src="images/visalto-camera.webp" width="360" height="677" loading="lazy" alt="Vue caméra avec les noms des sommets">
+        <img src="images/visalto-panorama.webp" width="360" height="720" loading="lazy" alt="Panorama peint">
+        <img src="images/visalto-carte.webp" width="360" height="720" loading="lazy" alt="Carte">
+        <img src="images/visalto-fiche.webp" width="360" height="720" loading="lazy" alt="Fiche d'un sommet">
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="cluckoff">
+    <img class="banner" src="images/cluckoff-banniere.webp" width="1024" height="500" loading="lazy" alt="Une poule assise dans une prairie, à côté d'une éolienne">
+    <div class="body">
+      <div class="head">
+        <img class="icon" src="images/cluckoff-icone.webp" width="72" height="72" loading="lazy" alt="">
+        <div>
+          <h2>Cluck Off!</h2>
+          <p class="tagline">Des mini-jeux avec des poules</p>
+          <span class="status dev">En développement</span>
+        </div>
+      </div>
+      <p>Une collection de mini-jeux mobiles autour de poules pas très douées. Premier jeu : le <strong>lancer de poule</strong>. Trois lancers à la suite sur un parcours plein d'obstacles, de boosts, de glace, de boue, de vent… et d'un renard. Médailles à décrocher, de jour comme de nuit.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="contact">Contact : <a href="mailto:jr2dallas.dev@gmail.com">jr2dallas.dev@gmail.com</a></p>
+    <p>Une question, un bug, une idée ? Écris-moi.</p>
+    <p>© 2026 jr2dallas</p>
+  </div>
+</footer>
+</body>
+</html>
